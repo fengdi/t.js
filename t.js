@@ -26,7 +26,17 @@
 	}
 
 	function scrub(val) {
-		return new Option(val).innerHTML.replace(/"/g,"&quot;");
+		var encodeHTMLRules = {
+			"&": "&#38;",
+			"<": "&#60;",
+			">": "&#62;",
+			'"': '&#34;',
+			"'": '&#39;',
+			"/": '&#47;'
+		};
+		return (""+val).replace(/&(?!#?\w+;)|<|>|"|'|\//g,function(m) {
+			return encodeHTMLRules[m] || m;
+		});
 	}
 
 	function get_value(vars, key) {
