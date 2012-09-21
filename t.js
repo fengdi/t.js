@@ -39,16 +39,15 @@
 		});
 	}
 
-	function get_value(vars, key) {
-		var parts = key.split('.');
-		while (parts.length) {
-			if (!(parts[0] in vars)) {
-				return false;
-			}
-			vars = vars[parts.shift()];
-		}
-		return vars;
-	}
+  //if obj={a:[{c:"r"}]}; path="a.0.c"; return "r"
+  function get_value(obj,path){
+    (""+path).replace(/[^.]+/g,function(n){
+        if(obj!=void 0 && n in obj){
+            obj = obj[n];
+        }
+    });
+    return obj;
+  }
 
 	function render(fragment, vars) {
 		return fragment
