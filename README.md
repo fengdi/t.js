@@ -13,6 +13,7 @@
  * Multi-line templates (no removal of newlines required to render)
  * Render the same template multiple times with different data
  * Works in all modern browsers
+ * Pure ECMA-262,it works in [nodejs](https://github.com/joyent/node)/[V8](https://code.google.com/p/v8/)
 
 ### How to use
 
