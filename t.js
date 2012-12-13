@@ -39,15 +39,18 @@
 		});
 	}
 
-  //if obj={a:[{c:"r"}]}; path="a.0.c"; return "r"
-  function get_value(obj,path){
-    (""+path).replace(/[^.]+/g,function(n){
-        if(obj!=void 0 && n in obj){
-            obj = obj[n];
-        }
-    });
-    return obj;
-  }
+	  
+	  // get_value({a:[{c:"r"}]}, "a.0.c"); // r
+	  function get_value(obj,path){
+	    (""+path).replace(/[^.]+/g,function(n){
+	        if(obj!=void 0 && n in obj){
+			obj = obj[n];
+	        }else{
+	        	obj = void 0;
+	        }
+	    });
+	    return obj;
+	  }
 
 	function render(fragment, vars) {
 		return fragment
