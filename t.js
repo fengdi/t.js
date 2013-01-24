@@ -43,7 +43,7 @@
 	  // get_value({a:[{c:"r"}]}, "a.0.c"); // r
 	  function get_value(obj, path){
 	    (path+"").replace(/[^.]+/g,function(n){
-	    	obj = (obj!=void 0 && n in obj) ? obj[n] : void 0;
+	    	obj = (obj!=void 0 && typeof obj=="object" && n in obj) ? obj[n] : void 0;
 	    });
 	    return obj;
 	  }
